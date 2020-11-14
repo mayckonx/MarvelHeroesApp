@@ -42,6 +42,11 @@
 		9A410603255E802100674913 /* MarvelUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4105EE255E802100674913 /* MarvelUI.framework */; };
 		9A410604255E802100674913 /* MarvelUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4105EE255E802100674913 /* MarvelUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A41065E255E80AD00674913 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41065D255E80AD00674913 /* BaseCoordinator.swift */; };
+		9A410728255FE1E500674913 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410727255FE1E500674913 /* NetworkService.swift */; };
+		9A410734255FE22A00674913 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410733255FE22A00674913 /* NetworkAPI.swift */; };
+		9A410741255FE46400674913 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410740255FE46400674913 /* String+ext.swift */; };
+		9A410758255FF6D000674913 /* MarvelErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410757255FF6D000674913 /* MarvelErrorResponse.swift */; };
+		9A41076E255FF78300674913 /* MarvelErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */; };
 		9AE25624255E7D6700E351F6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE25623255E7D6700E351F6 /* AppCoordinator.swift */; };
 		9D16EDBC067C38272275D9E1 /* Pods_MarvelCoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD76E7ACC1B752967DDFDEC7 /* Pods_MarvelCoreTests.framework */; };
 		AF2278EAB12FAAC3D5CCFB31 /* Pods_MarvelDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1A915EC2F4147ECB2894A /* Pods_MarvelDomain.framework */; };
@@ -236,6 +241,11 @@
 		9A4105FD255E802100674913 /* MarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelUITests.swift; sourceTree = "<group>"; };
 		9A4105FF255E802100674913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A41065D255E80AD00674913 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		9A410727255FE1E500674913 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		9A410733255FE22A00674913 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		9A410740255FE46400674913 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
+		9A410757255FF6D000674913 /* MarvelErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponse.swift; sourceTree = "<group>"; };
+		9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponseHandler.swift; sourceTree = "<group>"; };
 		9AE25623255E7D6700E351F6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9C08B586A018E88D83FB08BD /* Pods-MarvelHeroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelHeroes.debug.xcconfig"; path = "Target Support Files/Pods-MarvelHeroes/Pods-MarvelHeroes.debug.xcconfig"; sourceTree = "<group>"; };
 		9F250A10B4A6E12D22A6A47C /* Pods_MarvelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -497,6 +507,8 @@
 		9A41058D255E7FF900674913 /* MarvelNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				9A41073F255FE45B00674913 /* Extensions */,
+				9A410726255FE1A600674913 /* NetworkLayer */,
 				9A41058E255E7FF900674913 /* MarvelNetwork.h */,
 				9A41058F255E7FF900674913 /* Info.plist */,
 			);
@@ -555,6 +567,33 @@
 				9A41065D255E80AD00674913 /* BaseCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9A410726255FE1A600674913 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9A410756255FF6A000674913 /* Errors */,
+				9A410727255FE1E500674913 /* NetworkService.swift */,
+				9A410733255FE22A00674913 /* NetworkAPI.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		9A41073F255FE45B00674913 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9A410740255FE46400674913 /* String+ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9A410756255FF6A000674913 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9A410757255FF6D000674913 /* MarvelErrorResponse.swift */,
+				9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		9AE2561E255E7D1900E351F6 /* Util */ = {
@@ -907,6 +946,7 @@
 					};
 					9A41058B255E7FF900674913 = {
 						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
 					};
 					9A410593255E7FF900674913 = {
 						CreatedOnToolsVersion = 12.1;
@@ -1432,6 +1472,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A410758255FF6D000674913 /* MarvelErrorResponse.swift in Sources */,
+				9A410728255FE1E500674913 /* NetworkService.swift in Sources */,
+				9A410741255FE46400674913 /* String+ext.swift in Sources */,
+				9A41076E255FF78300674913 /* MarvelErrorResponseHandler.swift in Sources */,
+				9A410734255FE22A00674913 /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1899,6 +1944,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F10E185BBD79B8CF09F3C7DC /* Pods-MarvelNetwork.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1915,6 +1961,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mayckon.app.MarvelNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1926,6 +1973,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 556053EBF578994060734493 /* Pods-MarvelNetwork.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
