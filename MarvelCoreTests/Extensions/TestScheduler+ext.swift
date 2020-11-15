@@ -4,12 +4,12 @@
 //
 //  Created by Mayckon B on 15.11.20.
 //
-
+import Foundation
 import RxTest
 import RxSwift
 import RxCocoa
 
-extension TestScheduler {
+public extension TestScheduler {
 
    /**
     Creates a `TestableObserver` instance which immediately subscribes to the `source`

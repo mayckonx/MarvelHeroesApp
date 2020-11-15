@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Convert to decodable object
 
-extension Data {
+public extension Data {
     
     func decodeTo<T: Decodable>(object: T.Type) -> T? {
         return try? JSONDecoder().decode(T.self, from: self)

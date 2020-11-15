@@ -11,23 +11,23 @@ import Foundation
 
 // MARK: - Stub response data
 
-extension NetworkAPI {
+public extension NetworkAPI {
     
     var responseData: Data {
         switch self {
         case .characters:
-            return Bundle.loadResponse(name: "characters-response")!
+            return Bundle.loadResponse(name: "characters-response", target: NetworkServiceTests.self)!
         case .character:
-            return Bundle.loadResponse(name: "character")!
+            return Bundle.loadResponse(name: "character", target: NetworkServiceTests.self)!
         }
     }
     
     var brokenResponseData: Data {
         switch self {
         case .characters:
-            return Bundle.loadResponse(name: "characters-response-broken")!
+            return Bundle.loadResponse(name: "characters-response-broken", target: NetworkServiceTests.self)!
         case .character:
-            return Bundle.loadResponse(name: "character")!
+            return Bundle.loadResponse(name: "character", target: NetworkServiceTests.self)!
         }
     }
     

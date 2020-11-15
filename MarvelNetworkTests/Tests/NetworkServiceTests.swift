@@ -41,7 +41,7 @@ class NetworkServiceTests: XCTestCase {
     
     func testRequest_whenLoadingSuccessulResponse_shouldReturnMappedObject() {
         // Given
-        let expectedResult = Bundle.loadResponse(name: "characters-response")!.decodeTo(object: CharacterResponse.self)!
+        let expectedResult = Bundle.loadResponse(name: "characters-response", target: NetworkServiceTests.self)!.decodeTo(object: CharacterResponse.self)!
         
         // Setup network service
         let provider = MoyaProvider<NetworkAPI>(endpointClosure: Endpoints.response, stubClosure: MoyaProvider.immediatelyStub)
