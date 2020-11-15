@@ -19,7 +19,7 @@ public enum NetworkAPI {
         // MARK: -  API Setup
         
         private static let keys = MarvelHeroesKeys()
-        static let baseURL = "https://gateway.marvel.com"
+        static let baseURL = "https://gateway.marvel.com:443"
         static let privatekey = keys.marvelPrivateKey
         static let apikey = keys.marvelApiKey
         static let timestamp = Date().timeIntervalSince1970.description

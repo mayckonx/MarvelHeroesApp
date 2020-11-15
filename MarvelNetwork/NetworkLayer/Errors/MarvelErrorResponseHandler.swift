@@ -17,7 +17,7 @@ struct MarvelErrorResponseHandler {
         case .underlying(let nsError as NSError, _):
            return connectionErrors(from: nsError)
         case .statusCode(let response):
-            if 400...500 ~= response.statusCode {
+            if 400...499 ~= response.statusCode {
                 return .unauthorized
             }
         default:

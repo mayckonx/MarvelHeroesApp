@@ -16,7 +16,7 @@ public protocol NetworkServiceType {
     ///         - endpoint: The API endpoint
     ///
     /// - Returns: An observable containing the mapped response
-    func requestObject<T: Decodable>(_ endpoint: NetworkAPI) -> Observable<T>
+    func request<T: Decodable>(_ endpoint: NetworkAPI) -> Observable<T>
 }
 
 public final class NetworkService: NetworkServiceType {
@@ -26,13 +26,13 @@ public final class NetworkService: NetworkServiceType {
     /// Scheduler used for executing the operation on the background thread
     private let schedulerBackground: ConcurrentDispatchQueueScheduler
     
-    init(isTesting: Bool = false,
+    init(provider: MoyaProvider<NetworkAPI> = MoyaProvider<NetworkAPI>(),
          schedulerBackground: ConcurrentDispatchQueueScheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))) {
-        provider = isTesting ? MoyaProvider<NetworkAPI>(stubClosure: MoyaProvider.immediatelyStub) : MoyaProvider<NetworkAPI>()
+        self.provider = provider
         self.schedulerBackground = schedulerBackground
     }
    
-    public func requestObject<T: Decodable>(_ endpoint: NetworkAPI) -> Observable<T> {
+    public func request<T: Decodable>(_ endpoint: NetworkAPI) -> Observable<T> {
         return provider.rx.request(endpoint)
             .observeOn(schedulerBackground)
             .asObservable()
