@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CharacterResponse: Decodable, Hashable {
+public struct CharacterResponse: Decodable {
     var characters: [Character]
     
     private enum CodingKeys: String, CodingKey {
