@@ -6,6 +6,20 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+protocol CharactersViewModelInput {
+    
+}
+
+protocol CharactersViewModelOutput {
+    
+}
+
+protocol CharactersViewModelRouting {
+    
+}
 
 final class CharactersViewModel {
     private let service: CharactersServiceType

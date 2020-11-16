@@ -21,7 +21,7 @@ public struct ThumbImage: Decodable {
 
 extension ThumbImage {
     
-    var fullPath: String {
+   public var fullPath: String {
         return "\(path).\(imageExtension)"
     }
     
