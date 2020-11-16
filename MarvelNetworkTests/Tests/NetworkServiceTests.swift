@@ -12,6 +12,7 @@ import RxTest
 import RxBlocking
 import Moya
 
+@testable import MarvelDomain
 @testable import MarvelNetwork
 
 class NetworkServiceTests: XCTestCase {
@@ -69,9 +70,10 @@ class NetworkServiceTests: XCTestCase {
         
         // When
         let result = scheduler.record(response, disposeBag: bag)
+        scheduler.start()
         exp.fulfill()
         
-        waitForExpectations(timeout: 0.1) { _ in
+        waitForExpectations(timeout: 0.5) { _ in
             // Then
             XCTAssertEqual(result.events[0].value.error as? MarvelErrorResponse, MarvelErrorResponse.internalServerError)
         }
@@ -89,38 +91,13 @@ class NetworkServiceTests: XCTestCase {
         
         // When
         let result = scheduler.record(response, disposeBag: bag)
+        scheduler.start()
         exp.fulfill()
         
-        waitForExpectations(timeout: 0.1) { _ in
+        waitForExpectations(timeout: 0.5) { _ in
             // Then
             XCTAssertEqual(result.events[0].value.error as? MarvelErrorResponse, MarvelErrorResponse.unauthorized)
         }
     }
     
 }
-
-// TODO: Add it to the Domain module
-
-struct Character: Codable, Hashable {
-    var id: Int = 0
-    var name: String = ""
-}
-
-struct CharacterResponse: Decodable, Hashable {
-    var characters: [Character]
-    
-    private enum CodingKeys: String, CodingKey {
-        case data = "data"
-    }
-    
-    private enum ResultKeys: String, CodingKey {
-        case results = "results"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try! decoder.container(keyedBy: CodingKeys.self)
-        let resultsContainer = try! container.nestedContainer(keyedBy: ResultKeys.self, forKey: .data)
-        characters = try resultsContainer.decode([Character].self, forKey: .results)
-    }
-}
-
