@@ -26,7 +26,7 @@ public final class NetworkService: NetworkServiceType {
     /// Scheduler used for executing the operation on the background thread
     private let schedulerBackground: ConcurrentDispatchQueueScheduler
     
-    init(provider: MoyaProvider<NetworkAPI> = MoyaProvider<NetworkAPI>(),
+    public init(provider: MoyaProvider<NetworkAPI> = MoyaProvider<NetworkAPI>(),
          schedulerBackground: ConcurrentDispatchQueueScheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))) {
         self.provider = provider
         self.schedulerBackground = schedulerBackground
