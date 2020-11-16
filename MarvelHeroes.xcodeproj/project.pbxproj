@@ -46,6 +46,9 @@
 		9A410741255FE46400674913 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410740255FE46400674913 /* String+ext.swift */; };
 		9A410758255FF6D000674913 /* MarvelErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410757255FF6D000674913 /* MarvelErrorResponse.swift */; };
 		9A41076E255FF78300674913 /* MarvelErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */; };
+		9A7B195F2562660300A09B9D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B195E2562660300A09B9D /* Character.swift */; };
+		9A7B196B2562660B00A09B9D /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B196A2562660B00A09B9D /* CharacterResponse.swift */; };
+		9A7B19AC2562699000A09B9D /* ThumbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B19AB2562699000A09B9D /* ThumbImage.swift */; };
 		9AE25624255E7D6700E351F6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE25623255E7D6700E351F6 /* AppCoordinator.swift */; };
 		9AEA0E1B256135C300428B33 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA0E1A256135C300428B33 /* NetworkServiceTests.swift */; };
 		9AEA0E282561384C00428B33 /* NetworkAPI+data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA0E272561384C00428B33 /* NetworkAPI+data.swift */; };
@@ -263,6 +266,9 @@
 		9A410740255FE46400674913 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
 		9A410757255FF6D000674913 /* MarvelErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponse.swift; sourceTree = "<group>"; };
 		9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponseHandler.swift; sourceTree = "<group>"; };
+		9A7B195E2562660300A09B9D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		9A7B196A2562660B00A09B9D /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
+		9A7B19AB2562699000A09B9D /* ThumbImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbImage.swift; sourceTree = "<group>"; };
 		9AE25623255E7D6700E351F6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		9AEA0E1A256135C300428B33 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		9AEA0E272561384C00428B33 /* NetworkAPI+data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkAPI+data.swift"; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 		9A41055F255E7FE500674913 /* MarvelDomain */ = {
 			isa = PBXGroup;
 			children = (
+				9A7B195D256265D300A09B9D /* Domain */,
 				9A410560255E7FE500674913 /* MarvelDomain.h */,
 				9A410561255E7FE500674913 /* Info.plist */,
 			);
@@ -626,6 +633,32 @@
 				9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		9A7B1947256265C000A09B9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A7B195E2562660300A09B9D /* Character.swift */,
+				9A7B19AB2562699000A09B9D /* ThumbImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A7B195C256265C900A09B9D /* ModelResponse */ = {
+			isa = PBXGroup;
+			children = (
+				9A7B196A2562660B00A09B9D /* CharacterResponse.swift */,
+			);
+			path = ModelResponse;
+			sourceTree = "<group>";
+		};
+		9A7B195D256265D300A09B9D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9A7B195C256265C900A09B9D /* ModelResponse */,
+				9A7B1947256265C000A09B9D /* Model */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		9AE2561E255E7D1900E351F6 /* Util */ = {
@@ -1018,6 +1051,7 @@
 					};
 					9A41055D255E7FE500674913 = {
 						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
 					};
 					9A410565255E7FE600674913 = {
 						CreatedOnToolsVersion = 12.1;
@@ -1539,6 +1573,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A7B196B2562660B00A09B9D /* CharacterResponse.swift in Sources */,
+				9A7B195F2562660300A09B9D /* Character.swift in Sources */,
+				9A7B19AC2562699000A09B9D /* ThumbImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1945,6 +1982,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C9C7BD287B9729FB806EC5D7 /* Pods-MarvelDomain.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1961,6 +1999,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mayckon.app.MarvelDomain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1972,6 +2011,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39445DC2348B1D7E3CBA656F /* Pods-MarvelDomain.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
