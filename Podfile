@@ -7,6 +7,7 @@
 def core
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'ReactorKit'
   # image download/cache
   pod 'Kingfisher'
 end
