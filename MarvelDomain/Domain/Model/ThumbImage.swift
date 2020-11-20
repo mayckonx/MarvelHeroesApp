@@ -29,7 +29,7 @@ extension ThumbImage {
 
 // MARK: - Equatable
 
-extension ThumbImage: Equatable {
+extension ThumbImage: Hashable {
     
     public static func == (lhs: ThumbImage, rhs: ThumbImage) -> Bool {
         return lhs.path == rhs.path && lhs.imageExtension == rhs.imageExtension

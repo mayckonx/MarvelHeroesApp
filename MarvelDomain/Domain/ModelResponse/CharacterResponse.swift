@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CharacterResponse: Decodable {
-    var characters: [Character]
+    public var characters: [Character]
     
     private enum CodingKeys: String, CodingKey {
         case data = "data"

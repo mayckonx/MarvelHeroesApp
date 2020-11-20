@@ -21,9 +21,9 @@ public struct Character: Decodable {
     }
 }
 
-// MARK: - Equatable
+// MARK: - Hashable
 
-extension Character: Equatable {
+extension Character: Hashable {
     
     public static func ==(lhs: Character, rhs: Character) -> Bool {
         return lhs.id == rhs.id &&
