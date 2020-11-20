@@ -13,10 +13,11 @@ import Kingfisher
 public extension UIImageView {
     
     func download(image url: String) {
-        guard let imageURL = URL(string:url) else {
+        guard let imageURL = URL(string:url), !url.contains("image_not_available") else {
+            image = UIImage(named: "placeholder")
             return
         }
-        self.kf.setImage(with: ImageResource(downloadURL: imageURL))
+        self.kf.setImage(with: ImageResource(downloadURL: imageURL), placeholder: UIImage(named: "placeholder"))
     }
     
 }

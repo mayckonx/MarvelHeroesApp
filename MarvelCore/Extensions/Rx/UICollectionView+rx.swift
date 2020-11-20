@@ -12,9 +12,11 @@ import RxCocoa
 extension Reactive where Base: UICollectionView {
     
     public var nearBottom: Observable<Void> {
-        let bottomOffset: CGFloat = 100.0
+        let bottomOffset: CGFloat = 40.0
         
         func isNearBottomEdge(collectionView: UICollectionView, edgeOffset: CGFloat = bottomOffset) -> Bool {
+            guard collectionView.contentSize.height >= collectionView.frame.size.height else { return false }
+            
             return collectionView.contentOffset.y + collectionView.frame.size.height + edgeOffset > collectionView.contentSize.height
         }
         
