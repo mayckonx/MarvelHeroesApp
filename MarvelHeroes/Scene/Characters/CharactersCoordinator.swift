@@ -26,9 +26,9 @@ final class CharactersCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
+        
         // setup view controller
-        let viewModel = CharactersViewModel(service: service)
-        let viewController = CharactersViewController(viewModel: viewModel)
+        let viewController = CharactersViewController(reactor: CharactersReactor())
         let navigationController = self.navigationController(with: viewController)
         
         // setup window
@@ -45,7 +45,14 @@ private extension CharactersCoordinator {
     
     func navigationController(with viewController: CharactersViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
+        // title
+        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.topItem?.title = Constants.title
+        
+        // color
+        UINavigationBar.appearance().barTintColor = .marvelBlack
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         return navigationController
     }

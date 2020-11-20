@@ -19,6 +19,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        return .empty()
+        guard let window = window else { return .empty() }
+        return CharactersCoordinator(window: window).start()
     }
 }
