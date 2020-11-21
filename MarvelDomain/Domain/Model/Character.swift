@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Character: Decodable {
-    var id: Int
-    var name: String
-    var description: String
-    var thumbnail: ThumbImage?
+    public var id: Int
+    public var name: String
+    public var description: String
+    public var thumbnail: ThumbImage?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,9 +21,9 @@ public struct Character: Decodable {
     }
 }
 
-// MARK: - Equatable
+// MARK: - Hashable
 
-extension Character: Equatable {
+extension Character: Hashable {
     
     public static func ==(lhs: Character, rhs: Character) -> Bool {
         return lhs.id == rhs.id &&

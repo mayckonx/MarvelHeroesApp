@@ -12,7 +12,7 @@ import CommonCrypto
 
 // MARK: - Constants and Endpoints
 
-public enum NetworkAPI {
+public enum NetworkAPI: TargetType, AccessTokenAuthorizable  {
     
     private enum Constants {
     
@@ -26,19 +26,22 @@ public enum NetworkAPI {
         static let hash = "\(timestamp)\(privatekey)\(apikey)".md5
         
         // MARK: - Queries
-        static let queryCharactersKey = "nameStartsWith"
+        static let queryCharactersLimitKey = "limit"
+        static let queryCharactersNextPageKey = "offset"
+        static let queryCharactersSearchKey = "nameStartsWith"
         static let queryCharacterKey = "characterId"
+        static let queryOrderBy = "orderBy"
     }
     
     // characters
-    case characters(_ nameStartsWith: String?)
+    case characters(_ nameStartsWith: String? , nextPage: Int, limit: Int)
     case character(_ characterId: String)
     
 }
 
 // MARK: - API Config
 
-extension NetworkAPI: TargetType, AccessTokenAuthorizable {
+extension NetworkAPI  {
     
     public var headers: [String : String]? {
         return [:]
@@ -69,17 +72,26 @@ extension NetworkAPI: TargetType, AccessTokenAuthorizable {
     
     public var parameters: [String: Any]? {
         switch self {
-        case .characters(let query):
-            guard let query = query else { return authParameters() }
-            return authParameters(with: Constants.queryCharactersKey, query: query)
+        case let .characters(query, nextPage, limit):
+            var queries: [String: String] = [
+                Constants.queryCharactersNextPageKey: "\(nextPage)",
+                Constants.queryCharactersLimitKey: "\(limit)",
+                Constants.queryOrderBy: "name"
+            ]
+                                            
+            if let query = query {
+                queries[Constants.queryCharactersSearchKey] = query
+            }
+            return authParameters(with: queries)
             
-        case .character(let query):
-            return authParameters(with: Constants.queryCharacterKey, query: query)
+        case let .character(query):
+            return authParameters(with: [Constants.queryCharacterKey: query])
         }
     }
     
     public var task: Task {
-        return .requestPlain
+        guard let parameters = parameters else { return .requestPlain }
+        return.requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
     }
     
     public var sampleData: Data {
@@ -91,7 +103,6 @@ extension NetworkAPI: TargetType, AccessTokenAuthorizable {
     
 }
 
-
 // MARK: - Auth and Additional parameters
 
 private extension NetworkAPI {
@@ -99,16 +110,13 @@ private extension NetworkAPI {
     /// Returns a dictionary with the auth parameters needed to make the request valid.
     /// Also it supports additional queries through the `key` and `query` variables.
     /// - Parameters:
-    ///         - key: A `String` containing the key for the additional query
-    ///         - value: A `String` containing the value for the additional query
-    func authParameters(with key: String? = nil, query: String? = nil) -> [String: String] {
+    ///         - queries: A `Dictionary` containing the key/values for the parameters
+    func authParameters(with queries: [String: String] = [:]) -> [String: String] {
         var authParameters = ["apikey": Constants.apikey,
                               "ts": Constants.timestamp,
                               "hash": Constants.hash]
         
-        if let key = key, let query = query {
-            authParameters[key] = query
-        }
+        authParameters.merge(dict: queries)
         
         return authParameters
     }
