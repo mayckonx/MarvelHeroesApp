@@ -49,7 +49,7 @@ class NetworkServiceTests: XCTestCase {
         sut = NetworkService(provider: provider)
         
         // Response
-        response = sut.request(.characters(nil))
+        response = sut.request(.characters(nil, nextPage: 0, limit: 20))
         
         // When
         let result = try! response.toBlocking().first()!
@@ -66,7 +66,7 @@ class NetworkServiceTests: XCTestCase {
         let provider = MoyaProvider<NetworkAPI>(endpointClosure: Endpoints.brokenResponse, stubClosure: MoyaProvider.immediatelyStub)
         sut = NetworkService(provider: provider)
         // 3. Response
-        response = sut.request(.characters(nil))
+        response = sut.request(.characters(nil, nextPage: 0, limit: 20))
         
         // When
         let result = scheduler.record(response, disposeBag: bag)
@@ -87,7 +87,7 @@ class NetworkServiceTests: XCTestCase {
         let provider = MoyaProvider<NetworkAPI>(endpointClosure: Endpoints.unauthorizedResponse, stubClosure: MoyaProvider.immediatelyStub)
         sut = NetworkService(provider: provider)
         // 3. Response
-        response = sut.request(.characters(nil))
+        response = sut.request(.characters(nil, nextPage: 0, limit: 20))
         
         // When
         let result = scheduler.record(response, disposeBag: bag)
