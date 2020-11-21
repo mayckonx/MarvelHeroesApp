@@ -27,6 +27,7 @@ end
 def tests
   pod 'RxTest'
   pod 'RxBlocking'
+  pod 'RxExpect'
 end
 
 #############################################
