@@ -38,6 +38,7 @@
 		9A12E49D25693D5900BE65CB /* characters-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA0E3D25613C1E00428B33 /* characters-response.json */; };
 		9A12E4A825693D5C00BE65CB /* characters-response-broken.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA0E8E2561C99F00428B33 /* characters-response-broken.json */; };
 		9A12E4B325693D5E00BE65CB /* character.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA0EB02561D0F500428B33 /* character.json */; };
+		9A12E4C9256941CD00BE65CB /* CharactersServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A12E4C8256941CD00BE65CB /* CharactersServiceMock.swift */; };
 		9A410567255E7FE600674913 /* MarvelDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A41055E255E7FE500674913 /* MarvelDomain.framework */; };
 		9A41056E255E7FE600674913 /* MarvelDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41056D255E7FE600674913 /* MarvelDomainTests.swift */; };
 		9A410570255E7FE600674913 /* MarvelDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A410560255E7FE500674913 /* MarvelDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -273,6 +274,7 @@
 		9A12E29E2569310C00BE65CB /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
 		9A12E39C256939CB00BE65CB /* MarvelMocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarvelMocks.h; sourceTree = "<group>"; };
 		9A12E39D256939CB00BE65CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A12E4C8256941CD00BE65CB /* CharactersServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersServiceMock.swift; sourceTree = "<group>"; };
 		9A41055E255E7FE500674913 /* MarvelDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarvelDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A410560255E7FE500674913 /* MarvelDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarvelDomain.h; sourceTree = "<group>"; };
 		9A410561255E7FE500674913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 		9A12E27C256930BC00BE65CB /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				9A12E4C8256941CD00BE65CB /* CharactersServiceMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1727,6 +1730,7 @@
 				9A12E46525693B7E00BE65CB /* Bundle+ext.swift in Sources */,
 				9A12E22F2568635500BE65CB /* CharactersReactorTests.swift in Sources */,
 				9A04441F255DC00400912743 /* MarvelHeroesTests.swift in Sources */,
+				9A12E4C9256941CD00BE65CB /* CharactersServiceMock.swift in Sources */,
 				9A12E47B25693B8600BE65CB /* TestScheduler+ext.swift in Sources */,
 				9A12E2452568636B00BE65CB /* CharactersCoordinatorTests.swift in Sources */,
 				9A12E2512568638300BE65CB /* CharactersServiceTests.swift in Sources */,
