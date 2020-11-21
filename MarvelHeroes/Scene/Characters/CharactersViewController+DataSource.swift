@@ -9,6 +9,14 @@ import UIKit
 import MarvelDomain
 
 extension CharactersViewController {
+    private enum Constants {
+        static let edgeInsets: CGFloat = 5
+        static let cellWidthDimension: CGFloat = 1/2
+        static let cellHeightDimension: CGFloat = 1.0
+        static let cellGroupWidthDimension: CGFloat = 1.0
+        static let cellGroupHeightDimension: CGFloat = 1/4
+        static let cellRootGroupDimension: CGFloat = 1.0
+    }
     
     typealias ItemsSnapshot = NSDiffableDataSourceSnapshot<Section, Character>
     
@@ -18,20 +26,23 @@ extension CharactersViewController {
         let layout = UICollectionViewCompositionalLayout { _, _ in
             let twoItems = NSCollectionLayoutItem(
               layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1/2),
-                heightDimension: .fractionalHeight(1.0)))
-            twoItems.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                widthDimension: .fractionalWidth(Constants.cellWidthDimension),
+                heightDimension: .fractionalHeight(Constants.cellHeightDimension)))
+            twoItems.contentInsets = NSDirectionalEdgeInsets(top: Constants.edgeInsets,
+                                                             leading: Constants.edgeInsets,
+                                                             bottom: Constants.edgeInsets,
+                                                             trailing: Constants.edgeInsets)
 
             let twoItemsGroup = NSCollectionLayoutGroup.horizontal(
               layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1/4)),
+                widthDimension: .fractionalWidth(Constants.cellGroupWidthDimension),
+                heightDimension: .fractionalHeight(Constants.cellGroupHeightDimension)),
               subitems: [twoItems, twoItems])
             
             let nestedGroup = NSCollectionLayoutGroup.vertical(
               layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(1.0)),
+                widthDimension: .fractionalWidth(Constants.cellRootGroupDimension),
+                heightDimension: .fractionalHeight(Constants.cellRootGroupDimension)),
               subitems: [twoItemsGroup])
             
             let section = NSCollectionLayoutSection(group: nestedGroup)
