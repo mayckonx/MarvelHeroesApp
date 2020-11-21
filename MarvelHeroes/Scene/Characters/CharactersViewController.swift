@@ -81,13 +81,12 @@ class CharactersViewController: UIViewController, View {
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .skip(1) // skip first empty result
-            .debug("teeeeeexxxxt")
             .map { Reactor.Action.updateQuery($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         // cancel filtering
-        Observable.merge(searchController.searchBar.rx.cancelButtonClicked.mapToVoid().debug("cancel emiiiiiiiiiiteedddd"),
+        Observable.merge(searchController.searchBar.rx.cancelButtonClicked.mapToVoid(),
                           refreshControl.rx.controlEvent(.valueChanged).filter { self.refreshControl.isRefreshing }.mapToVoid())
         .map { Reactor.Action.updateQuery(nil) }
         .bind(to: reactor.action)

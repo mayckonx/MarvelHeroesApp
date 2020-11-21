@@ -102,7 +102,7 @@ final class CharactersReactor: Reactor {
 private extension CharactersReactor {
     
     func fetchCharacters(query: String? = nil, totalCharacters: Int) -> Observable<[Character]> {
-        return service.characters(query: query, totalCharacters: totalCharacters).debug("responseeeeeee")
+        return service.characters(query: query, totalCharacters: totalCharacters)
     }
     
 }
