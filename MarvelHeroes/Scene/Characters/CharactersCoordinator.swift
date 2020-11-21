@@ -35,7 +35,7 @@ final class CharactersCoordinator: BaseCoordinator<Void> {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
          
-        return .never()
+        return .just(())
     }
 }
 
