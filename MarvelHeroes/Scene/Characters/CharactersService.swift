@@ -26,8 +26,7 @@ final class CharactersService: CharactersServiceType {
         self.networkService = networkService
     }
     
-    func characters(query: String? = nil, totalCharacters: Int) -> Observable<[Character]> {
-        print("Total characters:\(totalCharacters)")
+    func characters(query: String? = nil, totalCharacters: Int) -> Observable<[Character]> { 
         let result : Observable<CharacterResponse> = networkService.request(.characters(query, nextPage: totalCharacters, limit: Constants.fetchLimit))
         
         return result.map { $0.characters }.distinctUntilChanged()
