@@ -144,8 +144,12 @@ private extension CharactersViewController {
     }
     
     func setupCollectionView() {
+        // add as subivew
         view.addSubview(collectionView)
         view.addSubview(loadingIndicator)
+        
+        // loading/refresh component
+        refreshControl.tintColor = .white
         collectionView.backgroundView = loadingIndicator
         collectionView.refreshControl = refreshControl
         
