@@ -21,7 +21,6 @@ class CharactersReactorTests: XCTestCase {
     
     // MARK: - Auxiliar Variables
     var charactersServiceMock: CharactersServiceMock!
-    var response: Observable<[Character]>!
     var scheduler: TestScheduler!
     var bag: DisposeBag!
 
@@ -106,6 +105,32 @@ class CharactersReactorTests: XCTestCase {
             XCTAssertEqual(characters, [
                 Recorded.next(0, []),
                 Recorded.next(100, mockedCharacters)
+            ])
+        }
+    }
+    
+    func testReactor_whenSelectIndex_shouldEmitCharacterSelected() {
+        // Given
+        
+        // prepare service
+        let mockedCharacters = Bundle.loadResponse(name: "characters-response")!.decodeTo(object: CharacterResponse.self)!.characters
+        let expectedCharacter = Optional(mockedCharacters[1])
+        charactersServiceMock.characters = mockedCharacters
+        
+        // set up test input
+        let test = RxExpect()
+        let reactor = test.retain(sut)
+        test.input(reactor.action, [Recorded.next(100, .loadNextPage),
+                                    Recorded.next(200, .characterAt(1))])
+        
+        // When
+        let characterResponse = reactor.state.map { $0.character }.distinctUntilChanged()
+        
+        // Then
+        test.assert(characterResponse) { character in
+            XCTAssertEqual(character, [
+                Recorded.next(0, nil),
+                Recorded.next(200, expectedCharacter)
             ])
         }
     }

@@ -59,6 +59,8 @@
 		9A410741255FE46400674913 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410740255FE46400674913 /* String+ext.swift */; };
 		9A410758255FF6D000674913 /* MarvelErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410757255FF6D000674913 /* MarvelErrorResponse.swift */; };
 		9A41076E255FF78300674913 /* MarvelErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */; };
+		9A5233E1256ADF6F004D8DAC /* CharacterCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5233E0256ADF6F004D8DAC /* CharacterCoordinatorTests.swift */; };
+		9A5233F3256ADFFF004D8DAC /* CharacterReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5233F2256ADFFF004D8DAC /* CharacterReactorTests.swift */; };
 		9A7B195F2562660300A09B9D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B195E2562660300A09B9D /* Character.swift */; };
 		9A7B196B2562660B00A09B9D /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B196A2562660B00A09B9D /* CharacterResponse.swift */; };
 		9A7B19AC2562699000A09B9D /* ThumbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B19AB2562699000A09B9D /* ThumbImage.swift */; };
@@ -271,6 +273,8 @@
 		9A410740255FE46400674913 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
 		9A410757255FF6D000674913 /* MarvelErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponse.swift; sourceTree = "<group>"; };
 		9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponseHandler.swift; sourceTree = "<group>"; };
+		9A5233E0256ADF6F004D8DAC /* CharacterCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCoordinatorTests.swift; sourceTree = "<group>"; };
+		9A5233F2256ADFFF004D8DAC /* CharacterReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterReactorTests.swift; sourceTree = "<group>"; };
 		9A7B195E2562660300A09B9D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9A7B196A2562660B00A09B9D /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
 		9A7B19AB2562699000A09B9D /* ThumbImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbImage.swift; sourceTree = "<group>"; };
@@ -522,9 +526,8 @@
 		9A12E22D2568634000BE65CB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				9A12E2442568636B00BE65CB /* CharactersCoordinatorTests.swift */,
-				9A12E22E2568635500BE65CB /* CharactersReactorTests.swift */,
-				9A12E2502568638300BE65CB /* CharactersServiceTests.swift */,
+				9A5233DE256ADF52004D8DAC /* Characters */,
+				9A5233DF256ADF5A004D8DAC /* Character */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -661,6 +664,25 @@
 				9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		9A5233DE256ADF52004D8DAC /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				9A12E2442568636B00BE65CB /* CharactersCoordinatorTests.swift */,
+				9A12E22E2568635500BE65CB /* CharactersReactorTests.swift */,
+				9A12E2502568638300BE65CB /* CharactersServiceTests.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		9A5233DF256ADF5A004D8DAC /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				9A5233E0256ADF6F004D8DAC /* CharacterCoordinatorTests.swift */,
+				9A5233F2256ADFFF004D8DAC /* CharacterReactorTests.swift */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 		9A7B1947256265C000A09B9D /* Model */ = {
@@ -1521,8 +1543,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5233F3256ADFFF004D8DAC /* CharacterReactorTests.swift in Sources */,
 				9A12E47025693B8300BE65CB /* Data+ext.swift in Sources */,
 				9A12E45A25693B7A00BE65CB /* NetworkServiceMock.swift in Sources */,
+				9A5233E1256ADF6F004D8DAC /* CharacterCoordinatorTests.swift in Sources */,
 				9A12E46525693B7E00BE65CB /* Bundle+ext.swift in Sources */,
 				9A12E22F2568635500BE65CB /* CharactersReactorTests.swift in Sources */,
 				9A04441F255DC00400912743 /* MarvelHeroesTests.swift in Sources */,
