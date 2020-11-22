@@ -162,11 +162,6 @@ private extension CharactersViewController {
             .updateValue(UIColor.white, forKey: NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue))
     }
     
-    func updateWhenSelected(at indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        view.endEditing(true)
-    }
-    
 }
 
 // MARK: - Setup Constraints

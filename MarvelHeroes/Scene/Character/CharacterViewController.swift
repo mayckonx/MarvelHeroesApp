@@ -15,8 +15,15 @@ import MarvelDomain
 class CharacterViewController: UIViewController, View {
     // MARK: - Constants
     private enum Constants {
-        static let nameFont: CGFloat = 16
+        static let descriptionFont: CGFloat = 16
         static let margin: CGFloat = 20
+        static let cornerRadius: CGFloat = 10
+        static let nameFont: CGFloat = 22
+        static let nameLabelHeight: CGFloat = 30
+        static let descriptionLabelPriority: CGFloat = 750
+        static let backButtonWidth: CGFloat = 40
+        static let backButtonHeight: CGFloat = 20
+        static let imageHeight: CGFloat = UIScreen.main.bounds.size.height * 0.4
     }
     
     // MARK: - Internal Properties
@@ -43,7 +50,7 @@ class CharacterViewController: UIViewController, View {
         label.numberOfLines = 2
         label.textAlignment = .center
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.font = .systemFont(ofSize: Constants.nameFont, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -54,7 +61,7 @@ class CharacterViewController: UIViewController, View {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: Constants.nameFont, weight: .semibold)
+        label.font = .systemFont(ofSize: Constants.descriptionFont, weight: .semibold)
         return label
     }()
     
@@ -133,19 +140,23 @@ private extension CharacterViewController {
     }
     
     func setupViews() {
+        // add scroll view
         view.addSubview(scrollView)
         view.backgroundColor = .marvelBlack
 
+        // add scroll subvies
         scrollView.addSubview(contentView)
         contentView.addSubview(backButton)
         contentView.addSubview(nameLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(characterImageView)
         
+        // label color
         nameLabel.textColor = .white
         descriptionLabel.textColor = .white
         
-        characterImageView.layer.cornerRadius = 10
+        // image radius
+        characterImageView.layer.cornerRadius = Constants.cornerRadius
     }
     
 }
@@ -181,7 +192,7 @@ private extension CharacterViewController {
     func setupLabelsConstraints() {
         nameLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(backButton.snp.bottom).offset(Constants.margin)
-            make.height.equalTo(30)
+            make.height.equalTo(Constants.nameLabelHeight)
             make.leading.equalTo(contentView).offset(Constants.margin)
             make.trailing.equalTo(contentView).inset(Constants.margin)
         }
@@ -191,7 +202,7 @@ private extension CharacterViewController {
             make.leading.equalTo(contentView).offset(Constants.margin)
             make.trailing.equalTo(contentView).inset(Constants.margin)
             make.bottom.equalTo(contentView).inset(Constants.margin)
-            make.height.equalTo(contentView).priority(750)
+            make.height.equalTo(contentView).priority(Constants.descriptionLabelPriority)
         }
     }
     
@@ -199,8 +210,8 @@ private extension CharacterViewController {
         backButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView).offset(Constants.margin)
             make.leading.equalTo(contentView).offset(Constants.margin)
-            make.width.equalTo(40)
-            make.height.equalTo(20)
+            make.width.equalTo(Constants.backButtonWidth)
+            make.height.equalTo(Constants.backButtonHeight)
         }
     }
     
@@ -209,7 +220,7 @@ private extension CharacterViewController {
             make.top.equalTo(nameLabel.snp.bottom).offset(Constants.margin)
             make.leading.equalTo(contentView).offset(Constants.margin)
             make.trailing.equalTo(contentView).inset(Constants.margin)
-            make.height.equalTo(view.frame.size.height * 0.4)
+            make.height.equalTo(Constants.imageHeight)
         }
     }
     
