@@ -20,6 +20,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     
     override func start() -> Observable<Void> {
         guard let window = window else { return .empty() }
-        return CharactersCoordinator(window: window).start()
+        let charactersCoordinator = CharactersCoordinator(window: window)
+        return coordinate(to: charactersCoordinator)
     }
 }

@@ -8,7 +8,6 @@
 import RxSwift
 import RxCocoa
 import ReactorKit
-import UIKit
 import SnapKit
 import MarvelDomain
 import MarvelCore
@@ -19,15 +18,12 @@ class CharactersViewController: UIViewController, View {
     
     // MARK: - Internal Properties
     var disposeBag = DisposeBag()
-    var characterSelected: Observable<Character> {
-        return collectionView.rx.modelSelected(Character.self)
-            .asObservable()
-    }
     
     // MARK: - Private Properties
     private let searchController = UISearchController(searchResultsController: nil)
     private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     private let refreshControl = UIRefreshControl()
+    private weak var coordinatorDelegate: CharactersCoordinatorDelegate?
     
     private let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CharactersViewController.collectionViewLayout)
@@ -51,9 +47,9 @@ class CharactersViewController: UIViewController, View {
     }()
     
     // MARK: - Constructor
-    init(reactor: CharactersReactor) {
+    init(coordinatorDelegate: CharactersCoordinatorDelegate) {
+        self.coordinatorDelegate = coordinatorDelegate
         super.init(nibName: nil, bundle: nil)
-        self.reactor = reactor
     }
 
     required init?(coder _: NSCoder) {
@@ -67,21 +63,22 @@ class CharactersViewController: UIViewController, View {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        animateSearchController()
-    }
-    
     // MARK: - Binding
     func bind(reactor: CharactersReactor) {
         // Actions
         
         // search query
-        searchController.searchBar.rx.text
+        searchController.searchBar.rx.text.orEmpty
+            .filter { !$0.isEmpty }
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .skip(1) // skip first empty result
             .map { Reactor.Action.updateQuery($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // character selected
+        collectionView.rx.itemSelected
+            .map { Reactor.Action.characterAt($0.row) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
@@ -105,7 +102,6 @@ class CharactersViewController: UIViewController, View {
         // reload collection view
         reactor.state.map { $0.characters }
             .observeOn(MainScheduler.instance)
-            .asObservable()
             .subscribe(onNext: { [weak self] characters in
                 guard let self = self else { return }
                 self.dataSource.apply(self.snapshot(from: characters), animatingDifferences: true)
@@ -115,21 +111,21 @@ class CharactersViewController: UIViewController, View {
         // animate activity indicator
         reactor.state.map { $0.isLoadingNextPage }
             .observeOn(MainScheduler.instance)
-            .asObservable()
             .bind(to: loadingIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
         
         // animate refresh control
         reactor.state.map { $0.isLoadingNextPage }
             .observeOn(MainScheduler.instance)
-            .asObservable()
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
         
-        // View updates
-        collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.updateWhenSelected(at: indexPath)
+        // delegate
+        reactor.state.map { $0.character }
+            .observeOn(MainScheduler.instance)
+            .filterNil()
+            .subscribe(onNext: { [weak self] in
+                self?.coordinatorDelegate?.showCharacter($0)
             })
             .disposed(by: disposeBag)
         
@@ -145,13 +141,6 @@ private extension CharactersViewController {
         setupCollectionView()
         setupSearchController()
         setupConstraints()
-    }
-    
-    func animateSearchController() {
-        UIView.setAnimationsEnabled(false)
-        searchController.isActive = true
-        searchController.isActive = false
-        UIView.setAnimationsEnabled(true)
     }
     
     func setupCollectionView() {
