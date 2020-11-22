@@ -40,6 +40,7 @@ target 'MarvelHeroes' do
   use_frameworks!
   
   core
+  uicomponent
   
   # project keys
   plugin 'cocoapods-keys', {
@@ -84,21 +85,6 @@ target 'MarvelNetwork' do
   network
   
   target 'MarvelNetworkTests' do
-    inherit! :search_paths
-    tests
-  end
-
-end
-
-
-target 'MarvelUI' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  
-  core
-  uicomponent
-  
-  target 'MarvelUITests' do
     inherit! :search_paths
     tests
   end

@@ -18,12 +18,14 @@ class CharactersCoordinatorTests: XCTestCase {
     var sut: CharactersCoordinator!
     
     // MARK: - Auxiliar Variables
+    var scheduler: TestScheduler!
     var window: UIWindow!
     var bag: DisposeBag!
 
     // MARK: - Lifecycle
     override func setUp() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.scheduler = TestScheduler(initialClock: 0)
         self.sut = CharactersCoordinator(window: window)
         bag = DisposeBag()
     }
@@ -31,18 +33,23 @@ class CharactersCoordinatorTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         sut = nil
+        scheduler = nil
         window = nil
         bag = nil
     }
     
     func testCoordinator_whenStart_shouldTriggerEvent() {
+        // Given
+        let observer = scheduler.createObserver(Void.self)
+        
         // When
-        guard let result = try? sut.start().toBlocking().toArray() else {
-            XCTFail("Coordinator has failed to start the scene")
-            return
-        }
+        sut.start()
+            .bind(to: observer)
+            .disposed(by: bag)
+        
+        scheduler.start()
         
         // Then
-        XCTAssertEqual(result.count, 1)
+        XCTAssertEqual(observer.events.count, 1)
     }
 }
