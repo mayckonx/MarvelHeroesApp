@@ -1,0 +1,14 @@
+osx_image: xcode12.2
+language: swift
+
+xcode_workspace: MarvelHeroes.xcworkspace
+cache: cocoapods
+before_install:
+  - brew update
+  - gem install slather
+  - gem install cocoapods
+
+script:
+  - xcodebuild clean test -workspace MarvelHeroes.xcworkspace -scheme MarvelHeroes -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=14.2' | xcpretty
+
+after_success: slather
