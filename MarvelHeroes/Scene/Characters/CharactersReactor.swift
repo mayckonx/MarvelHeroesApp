@@ -15,6 +15,7 @@ final class CharactersReactor: Reactor {
     }
     
     enum Action {
+        case characterAt(Int)
         case updateQuery(String?)
         case loadNextPage
     }
@@ -23,11 +24,13 @@ final class CharactersReactor: Reactor {
         case setQuery(String?)
         case setItems([Character], String?)
         case appendItems([Character])
+        case character(Character)
         case setLoadingNextPage(Bool)
     }
     
     struct State {
         var query: String?
+        var character: Character?
         var characters: [Character] = []
         var isLoadingNextPage: Bool = false
     }
@@ -70,6 +73,9 @@ final class CharactersReactor: Reactor {
                 // 3. stops loading page
                 .just(.setLoadingNextPage(false))
             ])
+        case let .characterAt(index):
+            return .just(.character(currentState.characters[index]))
+            
         }
     }
     
@@ -77,20 +83,28 @@ final class CharactersReactor: Reactor {
         switch mutation {
         case let .setQuery(query):
             var newState = state
+            newState.character = nil
             newState.query = query
             return newState
         case let .setItems(characters, query):
             var newState = state
+            newState.character = nil
             newState.query = query
             newState.characters = characters
             return newState
         case let .appendItems(characters):
             var newState = state
+            newState.character = nil
             newState.characters.append(contentsOf: characters)
             return newState
         case let .setLoadingNextPage(isLoadingNextPage):
             var newState = state
+            newState.character = nil
             newState.isLoadingNextPage = isLoadingNextPage
+            return newState
+        case let .character(character):
+            var newState = state
+            newState.character = character
             return newState
         }
     
