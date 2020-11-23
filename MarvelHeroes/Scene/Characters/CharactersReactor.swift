@@ -35,7 +35,6 @@ final class CharactersReactor: Reactor {
         var isLoadingNextPage: Bool = false
     }
     
-    
     let initialState = State()
     private let service: CharactersServiceType
     

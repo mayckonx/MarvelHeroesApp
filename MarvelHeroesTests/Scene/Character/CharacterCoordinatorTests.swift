@@ -20,12 +20,10 @@ class CharacterCoordinatorTests: XCTestCase {
     
     // MARK: - Auxiliar Variables
     var scheduler: TestScheduler!
-    var window: UIWindow!
     var bag: DisposeBag!
 
     // MARK: - Lifecycle
     override func setUp() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
         self.scheduler = TestScheduler(initialClock: 0)
         self.sut = CharacterCoordinator(rootViewController: UINavigationController(), character: Character(id: 10,
                                                                                                            name: "Alien",
@@ -38,7 +36,6 @@ class CharacterCoordinatorTests: XCTestCase {
         super.tearDown()
         sut = nil
         scheduler = nil
-        window = nil
         bag = nil
     }
     

@@ -15,6 +15,9 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     private enum Constants {
         static let nameFont: CGFloat = 16
         static let margin: CGFloat = 5
+        static let cornerRadius: CGFloat = 5
+        static let bottomLabelHeight: CGFloat = 40
+        static let backgroundAlpha: CGFloat = 0.4
     }
     
     // MARK: - UI Properties
@@ -33,7 +36,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     private let bottomLabelView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.backgroundColor = UIColor.black.withAlphaComponent(Constants.backgroundAlpha)
         
         return view
     }()
@@ -72,7 +75,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        layer.cornerRadius = 5
+        layer.cornerRadius = Constants.cornerRadius
         layer.masksToBounds = true
     }
 }
@@ -114,7 +117,7 @@ private extension CharactersCollectionViewCell {
     
     func setupBottomViewConstraints() {
         bottomLabelView.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(40)
+            make.height.equalTo(Constants.bottomLabelHeight)
             make.bottom.equalTo(self)
             make.leading.trailing.equalTo(self)
         }

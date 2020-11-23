@@ -224,6 +224,5 @@ private extension CharacterViewController {
         }
     }
     
-    
 }
 
