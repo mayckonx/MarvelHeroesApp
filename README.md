@@ -40,19 +40,20 @@ That being said, we can achieve the following result:
 
 ## Project Structure
 The project is structured in multiple targets: 
-- 🦸‍♂️ MarvelHeroes - The app's main target. It uses all other targets as dependencies.
+- 🦸‍♂️ **MarvelHeroes** - The app's main target. It uses all other targets as dependencies.
 
-- 🧿 Core  - The core target provides the base and reusable classes and extensions that can be used by the main target. For instance: classes such as a `BaseCoordinator`, useful extensions for `RxSwift`, `UIKit` and so on.
+- 🧿 **Core** - The core target provides the base and reusable classes and extensions that can be used by the main target. For instance: classes such as a `BaseCoordinator`, useful extensions for `RxSwift`, `UIKit` and so on.
 
-- 📡 Network  - Provides an abstraction of the network layer as a service. Through this target, we can use all operations we need for network requests. Furthermore, as we just expose the API we can easily replace the network framework/components without affecting the Network's target consumers.
+- 📡 **Network**  - Provides an abstraction of the network layer as a service. Through this target, we can use all operations we need for network requests. Furthermore, as we just expose the API we can easily replace the network framework/components without affecting the Network's target consumers.
 
-- 📒 Domain  - Provides raw structs of models that are being used in the project. 
+- 📒 **Domain**  - Provides raw structs of models that are being used in the project. 
 
 ## Libraries
-- RxSwift - Reactive programming for Swift
-- ReactorKit - Reactive and unidirectional Swift application architecture
-- SnapKit - DSL to make Auto Layout easy on iOS.
-- Kingfisher - Library for downloading and caching images from the web
-- Moya - Network abstraction layer.
-- RxExpect - A testing framework for RxSwift
+- **RxSwift** - Reactive programming for Swift
+- **ReactorKit** - Reactive and unidirectional Swift application architecture
+- **SnapKit** - DSL to make Auto Layout easy on iOS.
+- **Kingfisher** - Library for downloading and caching images from the web
+- **Moya** - Network abstraction layer.
+- **RxExpect** - A testing framework for RxSwift
+
 
