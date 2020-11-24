@@ -22,7 +22,6 @@ class CharactersCoordinatorTests: XCTestCase {
     
     // MARK: - Auxiliar Variables
     var scheduler: TestScheduler!
-    var viewController: CharactersViewController!
     var delegateMock: CharactersCoordinatorDelegateMock!
     var window: UIWindow!
     var bag: DisposeBag!
@@ -40,7 +39,6 @@ class CharactersCoordinatorTests: XCTestCase {
         sut = nil
         scheduler = nil
         delegateMock = nil
-        viewController = nil
         window = nil
         bag = nil
     }
