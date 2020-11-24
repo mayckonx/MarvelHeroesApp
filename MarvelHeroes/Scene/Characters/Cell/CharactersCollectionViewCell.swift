@@ -21,7 +21,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - UI Properties
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
@@ -33,7 +33,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    private let bottomLabelView: UIView = {
+    let bottomLabelView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.black.withAlphaComponent(Constants.backgroundAlpha)
@@ -41,7 +41,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private let characterImageView: UIImageView = {
+    let characterImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill

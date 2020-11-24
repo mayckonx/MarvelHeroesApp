@@ -29,22 +29,8 @@ class CharacterViewController: UIViewController, View {
     // MARK: - Internal Properties
     var disposeBag = DisposeBag()
     
-    // MARK: - Private Properties
-    private weak var coordinatorDelegate: CharacterCoordinatorDelegate?
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-    
-    private let contentView: UIView = {
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
-    
-    private let nameLabel: UILabel = {
+    // MARK: - UI Properties
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
@@ -55,7 +41,7 @@ class CharacterViewController: UIViewController, View {
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -65,15 +51,7 @@ class CharacterViewController: UIViewController, View {
         return label
     }()
     
-    private let backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .white
-        button.setImage(UIImage(systemName: "arrow.down"), for: .normal)
-        return button
-    }()
-    
-    private let characterImageView: UIImageView = {
+    let characterImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
@@ -81,6 +59,30 @@ class CharacterViewController: UIViewController, View {
         
         return view
     }()
+    
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    let contentView: UIView = {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
+    
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        button.setImage(UIImage(systemName: "arrow.down"), for: .normal)
+        return button
+    }()
+    
+    // MARK: - Private properties
+    private weak var coordinatorDelegate: CharacterCoordinatorDelegate?
+    
     
     // MARK: - Constructor
     init(coordinatorDelegate: CharacterCoordinatorDelegate) {
@@ -106,19 +108,24 @@ class CharacterViewController: UIViewController, View {
             .map { Reactor.Action.showCharacter }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        backButton.rx.tap.mapToVoid()
+            .map { Reactor.Action.dismiss }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     
         // States
         
         // animate activity indicator
         reactor.state.map { $0.character }
             .filterNil()
-            .asObservable()
             .subscribe(onNext: { [weak self] in self?.show($0) })
             .disposed(by: disposeBag)
 
         // view
-        backButton.rx.tap.mapToVoid()
-            .subscribe(onNext: { [weak self] in self?.coordinatorDelegate?.dismiss() })
+        reactor.state.map { $0.shouldDismiss }
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in self?.coordinatorDelegate?.dismiss() })
             .disposed(by: disposeBag)
     }
     

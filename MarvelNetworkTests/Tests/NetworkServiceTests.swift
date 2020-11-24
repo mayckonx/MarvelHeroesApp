@@ -26,6 +26,7 @@ class NetworkServiceTests: XCTestCase {
 
     // MARK: - Lifecycle
     override func setUp() {
+        super.setUp()
         scheduler = TestScheduler(initialClock: 0)
         bag = DisposeBag()
     }

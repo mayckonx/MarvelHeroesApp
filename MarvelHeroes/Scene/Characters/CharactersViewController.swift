@@ -128,7 +128,6 @@ class CharactersViewController: UIViewController, View {
                 self?.coordinatorDelegate?.showCharacter($0)
             })
             .disposed(by: disposeBag)
-        
     }
     
 }
