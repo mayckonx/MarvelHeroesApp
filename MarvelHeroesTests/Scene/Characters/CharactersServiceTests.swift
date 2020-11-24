@@ -28,6 +28,7 @@ class CharactersServiceTests: XCTestCase {
 
     // MARK: - Lifecycle
     override func setUp() {
+        super.setUp()
         networkServiceMock = NetworkServiceMock()
         scheduler = TestScheduler(initialClock: 0)
         sut = CharactersService(networkService: networkServiceMock)

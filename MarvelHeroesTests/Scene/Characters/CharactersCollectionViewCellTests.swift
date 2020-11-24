@@ -17,6 +17,7 @@ class CharactersCollectionViewCellTests: XCTestCase {
 
     // MARK: - Lifecycle
     override func setUp() {
+        super.setUp()
         self.sut = CharactersCollectionViewCell(frame: .zero)
     }
     

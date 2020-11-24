@@ -26,6 +26,7 @@ class CharacterCoordinatorTests: XCTestCase {
 
     // MARK: - Lifecycle
     override func setUp() {
+        super.setUp()
         self.delegateMock = CharacterCoordinatorDelegateMock()
         self.scheduler = TestScheduler(initialClock: 0)
         bag = DisposeBag()
