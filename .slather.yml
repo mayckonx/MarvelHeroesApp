@@ -1,0 +1,8 @@
+ci_service: travis_ci
+coverage_service: coveralls
+xcodeproj: MarvelHeroes.xcodeproj
+workspace: MarvelHeroes.xcworkspace
+scheme: MarvelHeroes
+verbose: true
+ignore:
+- "**/Pods/*"

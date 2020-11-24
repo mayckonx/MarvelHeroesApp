@@ -2,7 +2,7 @@
 //  MarvelDomainTests.swift
 //  MarvelDomainTests
 //
-//  Created by Mayckon B on 13.11.20.
+//  Created by Mayckon B on 24.11.20.
 //
 
 import XCTest
@@ -29,5 +29,4 @@ class MarvelDomainTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
