@@ -39,6 +39,7 @@
 		9A209689256D1B680072C9CF /* MarvelCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A209688256D1B680072C9CF /* MarvelCoreTests.swift */; };
 		9A209694256D1B900072C9CF /* MarvelDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A209693256D1B900072C9CF /* MarvelDomainTests.swift */; };
 		9A209758256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A209757256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift */; };
+		9A209761256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A209760256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift */; };
 		9A410567255E7FE600674913 /* MarvelDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A41055E255E7FE500674913 /* MarvelDomain.framework */; };
 		9A410570255E7FE600674913 /* MarvelDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A410560255E7FE500674913 /* MarvelDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A410573255E7FE600674913 /* MarvelDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A41055E255E7FE500674913 /* MarvelDomain.framework */; };
@@ -239,6 +240,7 @@
 		9A209692256D1B900072C9CF /* MarvelDomainTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelDomainTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A209693256D1B900072C9CF /* MarvelDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDomainTests.swift; sourceTree = "<group>"; };
 		9A209757256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCoordinatorDelegateMock.swift; sourceTree = "<group>"; };
+		9A209760256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCoordinatorDelegateMock.swift; sourceTree = "<group>"; };
 		9A41055E255E7FE500674913 /* MarvelDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarvelDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A410560255E7FE500674913 /* MarvelDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarvelDomain.h; sourceTree = "<group>"; };
 		9A410561255E7FE500674913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			children = (
 				9A12E4C8256941CD00BE65CB /* CharactersServiceMock.swift */,
 				9A209757256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift */,
+				9A209760256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1431,6 +1434,7 @@
 				9A12E46525693B7E00BE65CB /* Bundle+ext.swift in Sources */,
 				9A12E22F2568635500BE65CB /* CharactersReactorTests.swift in Sources */,
 				9A12E4C9256941CD00BE65CB /* CharactersServiceMock.swift in Sources */,
+				9A209761256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift in Sources */,
 				9A209758256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift in Sources */,
 				9A12E47B25693B8600BE65CB /* TestScheduler+ext.swift in Sources */,
 				9A12E2452568636B00BE65CB /* CharactersCoordinatorTests.swift in Sources */,

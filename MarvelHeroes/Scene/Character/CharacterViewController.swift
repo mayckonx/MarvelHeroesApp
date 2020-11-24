@@ -106,19 +106,24 @@ class CharacterViewController: UIViewController, View {
             .map { Reactor.Action.showCharacter }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        backButton.rx.tap.mapToVoid()
+            .map { Reactor.Action.dismiss }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     
         // States
         
         // animate activity indicator
         reactor.state.map { $0.character }
             .filterNil()
-            .asObservable()
             .subscribe(onNext: { [weak self] in self?.show($0) })
             .disposed(by: disposeBag)
 
         // view
-        backButton.rx.tap.mapToVoid()
-            .subscribe(onNext: { [weak self] in self?.coordinatorDelegate?.dismiss() })
+        reactor.state.map { $0.shouldDismiss }
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in self?.coordinatorDelegate?.dismiss() })
             .disposed(by: disposeBag)
     }
     

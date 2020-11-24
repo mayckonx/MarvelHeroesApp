@@ -16,14 +16,17 @@ final class CharacterReactor: Reactor {
     
     enum Action {
         case showCharacter
+        case dismiss
     }
     
     enum Mutation {
         case setCharacterData(Character)
+        case dismiss
     }
     
     struct State {
         var character: Character?
+        var shouldDismiss: Bool = false
     }
     
     let initialState = State()
@@ -39,6 +42,8 @@ final class CharacterReactor: Reactor {
             var character = self.character
             character.description = character.description.isEmpty ? "No description" : character.description
             return .just(Mutation.setCharacterData(character))
+        case .dismiss:
+            return .just(.dismiss)
         }
     }
     
@@ -47,6 +52,11 @@ final class CharacterReactor: Reactor {
         case let .setCharacterData(character):
             var newState = state
             newState.character = character
+            newState.shouldDismiss = false
+            return newState
+        case .dismiss:
+            var newState = state
+            newState.shouldDismiss = true
             return newState
         }
     

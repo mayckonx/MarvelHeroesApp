@@ -23,19 +23,39 @@ final class CharacterCoordinator: BaseCoordinator<Void> {
     
     private let rootViewController: UINavigationController
     private let character: Character
+    private var viewController: CharacterViewController?
     
-    init(rootViewController: UINavigationController, character: Character) {
+    init(rootViewController: UINavigationController,
+         character: Character,
+         viewController: CharacterViewController? = nil) {
         self.rootViewController = rootViewController
         self.character = character
+        self.viewController = viewController
     }
     
     override func start() -> Observable<Void> {
         // setup view controller
-        let viewController = CharacterViewController(coordinatorDelegate: self)
+        let viewController = characterViewController()
         viewController.reactor = CharacterReactor(character)
         rootViewController.present(viewController, animated: true)
          
         return .empty()
+    }
+}
+
+// MARK: - Auxiliar methods
+
+private extension CharacterCoordinator {
+    
+    func characterViewController() -> CharacterViewController {
+        if let viewController = self.viewController {
+            return viewController
+        } else {
+            let viewController = CharacterViewController(coordinatorDelegate: self)
+            viewController.reactor = CharacterReactor(character)
+            self.viewController = viewController
+            return CharacterViewController(coordinatorDelegate: self)
+        }
     }
 }
 
