@@ -1,5 +1,7 @@
 # Marvel Heroes
 
+[![Coverage Status](https://coveralls.io/repos/github/mayckonx/MarvelHeroesApp/badge.svg?branch=feature/increase-unit-test)](https://coveralls.io/github/mayckonx/MarvelHeroesApp?branch=feature/increase-unit-test)
+
 Your favorite Marvel characters in one app. 
 
 ## Features
@@ -16,10 +18,9 @@ Your favorite Marvel characters in one app.
 
 ## Architecture
 We are using the MVVM-C with a slight change: We have renamed our ViewModel to Reactor. We use a unidirectional flow between the View and the Reactor. 
-
 What is a Reactor? 
-
 A Reactor is an UI-independent layer that manages the state of a view. The foremost role of a reactor is to separate control flow from a view. Every view has its corresponding reactor and delegates all logic to its reactor. A reactor has no dependency to a view, so it can be easily tested.
+The code is designed for simplicity, reussbility and testability. All classes are tested.
 
 ## A common problem in MVVM using RxSwift...
 While using the traditional bindings between a View and a View Model, we might end up having several communications going on, and to make it even harder there are also the side effects. The image below speaks for itself.
