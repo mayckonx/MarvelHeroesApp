@@ -29,8 +29,36 @@ class CharacterViewController: UIViewController, View {
     // MARK: - Internal Properties
     var disposeBag = DisposeBag()
     
-    // MARK: - Private Properties
-    private weak var coordinatorDelegate: CharacterCoordinatorDelegate?
+    // MARK: - UI Properties
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.font = .systemFont(ofSize: Constants.nameFont, weight: .semibold)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.backgroundColor = .clear
+        label.font = .systemFont(ofSize: Constants.descriptionFont, weight: .semibold)
+        return label
+    }()
+    
+    let characterImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        
+        return view
+    }()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -44,27 +72,6 @@ class CharacterViewController: UIViewController, View {
         return contentView
     }()
     
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: Constants.nameFont, weight: .semibold)
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        label.backgroundColor = .clear
-        label.font = .systemFont(ofSize: Constants.descriptionFont, weight: .semibold)
-        return label
-    }()
-    
     private let backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -73,14 +80,9 @@ class CharacterViewController: UIViewController, View {
         return button
     }()
     
-    private let characterImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        
-        return view
-    }()
+    // MARK: - Private properties
+    private weak var coordinatorDelegate: CharacterCoordinatorDelegate?
+    
     
     // MARK: - Constructor
     init(coordinatorDelegate: CharacterCoordinatorDelegate) {

@@ -28,6 +28,7 @@ class CharactersCoordinatorTests: XCTestCase {
 
     // MARK: - Lifecycle
     override func setUp() {
+        super.setUp()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.delegateMock = CharactersCoordinatorDelegateMock()
         self.scheduler = TestScheduler(initialClock: 0)
