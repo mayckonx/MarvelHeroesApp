@@ -109,6 +109,37 @@ class CharactersReactorTests: XCTestCase {
         }
     }
     
+    func testReactor_whenSetQuery_shouldUpdateStateProperties() {
+        // Given
+        
+        // prepare service
+        let mockedCharacters = Bundle.loadResponse(name: "characters-response")!.decodeTo(object: CharacterResponse.self)!.characters
+        charactersServiceMock.characters = mockedCharacters
+        
+        // set up test input
+        let test = RxExpect()
+        let reactor = test.retain(sut)
+        test.input(reactor.action, [Recorded.next(100, .updateQuery("Ac"))])
+        
+        // When
+        let characterSelected = reactor.state.map { $0.character }.distinctUntilChanged()
+        let currenQuery = reactor.state.map { $0.query }.distinctUntilChanged()
+        
+        // Then
+        test.assert(characterSelected) { result in
+            XCTAssertEqual(result, [
+                Recorded.next(0,  nil)
+            ])
+        }
+        
+        test.assert(currenQuery) { query in
+            XCTAssertEqual(query, [
+                Recorded.next(0,  nil),
+                Recorded.next(100, "Ac")
+            ])
+        }
+    }
+    
     func testReactor_whenSelectIndex_shouldEmitCharacterSelected() {
         // Given
         
@@ -162,6 +193,28 @@ class CharactersReactorTests: XCTestCase {
                 Recorded.next(300, thirdPage)
             ])
         }
+    }
+    
+    func testIsAction_whenActionIsUpdateQuery_shouldReturnTrue() {
+        // Given
+        let action: CharactersReactor.Action = .updateQuery("a")
+        
+        // When
+        let result = CharactersReactor.Action.isUpdateQueryAction(action)
+        
+        // Then
+        XCTAssertTrue(result)
+    }
+    
+    func testIsAction_whenActionIsDifferent_shouldReturnFalse() {
+        // Given
+        let action: CharactersReactor.Action = .loadNextPage
+        
+        // When
+        let result = CharactersReactor.Action.isUpdateQueryAction(action)
+        
+        // Then
+        XCTAssertFalse(result)
     }
     
 }

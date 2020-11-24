@@ -123,7 +123,8 @@ private extension CharactersReactor {
 
 // MARK: - Action extension
 
-private extension CharactersReactor.Action {
+extension CharactersReactor.Action {
+    
   static func isUpdateQueryAction(_ action: CharactersReactor.Action) -> Bool {
     if case .updateQuery = action {
       return true
@@ -131,4 +132,5 @@ private extension CharactersReactor.Action {
       return false
     }
   }
+    
 }
