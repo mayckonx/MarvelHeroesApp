@@ -60,6 +60,7 @@
 		9A41076E255FF78300674913 /* MarvelErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */; };
 		9A5233E1256ADF6F004D8DAC /* CharacterCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5233E0256ADF6F004D8DAC /* CharacterCoordinatorTests.swift */; };
 		9A5233F3256ADFFF004D8DAC /* CharacterReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5233F2256ADFFF004D8DAC /* CharacterReactorTests.swift */; };
+		9A6BBFCF256D55C7007AA599 /* CharactersCollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6BBFCE256D55C7007AA599 /* CharactersCollectionViewCellTests.swift */; };
 		9A7B195F2562660300A09B9D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B195E2562660300A09B9D /* Character.swift */; };
 		9A7B196B2562660B00A09B9D /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B196A2562660B00A09B9D /* CharacterResponse.swift */; };
 		9A7B19AC2562699000A09B9D /* ThumbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B19AB2562699000A09B9D /* ThumbImage.swift */; };
@@ -264,6 +265,7 @@
 		9A41076D255FF78300674913 /* MarvelErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelErrorResponseHandler.swift; sourceTree = "<group>"; };
 		9A5233E0256ADF6F004D8DAC /* CharacterCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCoordinatorTests.swift; sourceTree = "<group>"; };
 		9A5233F2256ADFFF004D8DAC /* CharacterReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterReactorTests.swift; sourceTree = "<group>"; };
+		9A6BBFCE256D55C7007AA599 /* CharactersCollectionViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCellTests.swift; sourceTree = "<group>"; };
 		9A7B195E2562660300A09B9D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9A7B196A2562660B00A09B9D /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
 		9A7B19AB2562699000A09B9D /* ThumbImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbImage.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				9A12E2442568636B00BE65CB /* CharactersCoordinatorTests.swift */,
 				9A12E22E2568635500BE65CB /* CharactersReactorTests.swift */,
 				9A12E2502568638300BE65CB /* CharactersServiceTests.swift */,
+				9A6BBFCE256D55C7007AA599 /* CharactersCollectionViewCellTests.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -1435,6 +1438,7 @@
 				9A12E22F2568635500BE65CB /* CharactersReactorTests.swift in Sources */,
 				9A12E4C9256941CD00BE65CB /* CharactersServiceMock.swift in Sources */,
 				9A209761256D3C3C0072C9CF /* CharacterCoordinatorDelegateMock.swift in Sources */,
+				9A6BBFCF256D55C7007AA599 /* CharactersCollectionViewCellTests.swift in Sources */,
 				9A209758256D32C40072C9CF /* CharactersCoordinatorDelegateMock.swift in Sources */,
 				9A12E47B25693B8600BE65CB /* TestScheduler+ext.swift in Sources */,
 				9A12E2452568636B00BE65CB /* CharactersCoordinatorTests.swift in Sources */,
