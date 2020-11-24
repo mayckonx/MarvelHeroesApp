@@ -54,7 +54,7 @@ private extension CharacterCoordinator {
             let viewController = CharacterViewController(coordinatorDelegate: self)
             viewController.reactor = CharacterReactor(character)
             self.viewController = viewController
-            return CharacterViewController(coordinatorDelegate: self)
+            return viewController
         }
     }
 }

@@ -21,7 +21,6 @@ final class CharactersReactor: Reactor {
     }
     
     enum Mutation {
-        case setQuery(String?)
         case setItems([Character], String?)
         case appendItems([Character])
         case character(Character)
@@ -81,11 +80,6 @@ final class CharactersReactor: Reactor {
     
     func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
-        case let .setQuery(query):
-            var newState = state
-            newState.character = nil
-            newState.query = query
-            return newState
         case let .setItems(characters, query):
             var newState = state
             newState.character = nil
