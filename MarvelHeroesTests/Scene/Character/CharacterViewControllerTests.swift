@@ -49,4 +49,27 @@ class CharacterViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.descriptionLabel.text, character.description)
         XCTAssertEqual(sut.characterImageView.image, UIImage(named: "placeholder"))
     }
+    
+    func testView_whenViewDidLoadCalled_shouldHaveConstraintsSet() {
+        // When
+        sut.view.setNeedsLayout()
+        sut.view.layoutIfNeeded()
+        
+        // Then
+        XCTAssertTrue(sut.scrollView.constraints.count > 0)
+        XCTAssertTrue(sut.contentView.constraints.count > 0)
+        XCTAssertTrue(sut.nameLabel.constraints.count > 0)
+        XCTAssertTrue(sut.characterImageView.constraints.count > 0)
+        XCTAssertTrue(sut.descriptionLabel.constraints.count > 0)
+        XCTAssertTrue(sut.backButton.constraints.count > 0)
+    }
+    
+    func testContentView_whenViewDidLoadCalled_shoulHaveChildOfScrollView() {
+        // When
+        sut.view.setNeedsLayout()
+        sut.view.layoutIfNeeded()
+        
+        // Then
+        XCTAssertEqual(sut.contentView.superview, sut.scrollView)
+    }
 }
